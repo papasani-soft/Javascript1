@@ -1,0 +1,56 @@
+
+  <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RegEx Form</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Form Validation</h1>
+        <form name="myform" action="submit_successful.html" onsubmit="return validation()">
+
+            <input type="text" name="username" placeholder="username" />
+            <p id="para1">User name should be min one capital letter</p>
+
+            <input type="text" name="email" placeholder="email"/>
+            <p id="para2">email format should be like"name"@ "gmail" . "com"</p>
+
+
+            <input type="password" name="password" placeholder="password"/>
+			<p id="para3">Invalid password</p>
+        
+            <b>Date of Birth:</b><input type="date" name="date">
+   
+		    <input style="width:200px" type="submit" value="Submit" />
+	  </form>
+       
+		<script type="text/javascript">
+			function validation() 
+			{
+				var username=document.myform.username.value;
+				var reg = /([A-Z]){1,}/;
+				 if (reg.test(username)==false)		
+				 {
+					alert('Invaid username ');
+					return false;
+				 }
+				var email=document.myform.email.value;
+				var reg = /^([A-Za-z0-9\.]){1,}\@([A-Za-z0-9_\-\.]){1,}\.([A-Za-z]){2,4}$/;
+				 if (reg.test(email)==false)		
+				 {
+					alert('Invaid email address');
+					return false;
+				 }
+
+				var password=document.myform.password.value;
+				var reg = /^([A-Za-z\d@$!%*?&]){8,10}$/;
+				 if (reg.test(password)==false)		
+				 {
+					alert('Invaid password ');
+					return false;
+				 }
+			} 
+		</script>
+    </body>
+</html>
